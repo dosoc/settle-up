@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+import React, {useState} from 'react'
 import './App.css';
 
+import PlayerForm from './components/playerForm'
+import ScoreCard from './components/scoreCard'
+
 function App() {
+  const [players, setPlayers] = useState([]);
+
+  const addToGame = (playerArray) => {
+    setPlayers(playerArray)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Settle UP</h1>
+      <p>The Golf betting App</p>
+      <PlayerForm add={addToGame}/>
+      <ScoreCard players={players}/>
     </div>
   );
 }

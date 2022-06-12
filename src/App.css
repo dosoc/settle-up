@@ -28,6 +28,62 @@
   color: #61dafb;
 }
 
+.container {
+  border: 1px solid black;
+  margin: 2%;
+  padding: 2%;
+}
+
+.score-card {
+  border: 1px solid red;
+
+}
+
+.hole-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 2%;
+}
+
+.hole {
+  width: 5%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid lightblue;
+}
+
+.hole-id{
+  font-weight: bold;
+}
+
+.hole-hcp {
+  font-style: italic;
+  font-size: 0.8em;
+}
+.hole-id {
+  border-bottom: 1px solid lightblue;
+  background-color: rgb(77, 77, 77);
+  color: white;
+  padding: 1%;
+}
+.hole-par {
+  border-bottom: 1px solid lightblue;
+}
+.player-card-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.player-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  padding: 1%;
+  margin: 1%;
+  box-shadow: 1px 1px 4px grey;
+  border-radius: 5px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
