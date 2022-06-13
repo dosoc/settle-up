@@ -4,7 +4,8 @@ import PlayerCard from './playerCard'
 const initialFormValues = {
     firstName: "",
     lastName: "",
-    handicap: ''
+    handicap: '',
+    score: ['','','','','','','','','','','','','','','','','','',]
     
 }
 

@@ -17,26 +17,30 @@ const ScoreCard = (props) => {
                 <option>--Avalible Courses--</option>
                 {Object.keys(courseData).map((course, idx) => <option value={course} key={idx}>{course}</option>)}
             </select>
-            <div className='hole-container'>
-                <div className='hole'>
-                    <div className='hole-id heading'>Hole</div>
-                    <div className='hole-par heading'>Par</div>
-                    <div className='hole-hcp heading'>HCP</div>
+            <div className='line-container'>
+                <div className='hole-container'>
+                    <div className='heading'>
+                        <div className='hole-id'>Hole</div>
+                        <div className='hole-par'>Par</div>
+                        <div className='hole-hcp'>HCP</div>
+                    </div>
+                    {course.map(hole => {
+                        return(
+                            <div className='hole' key={hole.holeID}>
+                                <div className='hole-id box'>{hole.holeID}</div>
+                                <div className='hole-par box'>{hole.par}</div>
+                                <div className='hole-hcp box'>{hole.handicap}</div>
+                            </div>
+                        )
+                    })}
                 </div>
-                {course.map(hole => {
-                    return(
-                        <div className='hole' key={hole.holeID}>
-                            <div className='hole-id'>{hole.holeID}</div>
-                            <div className='hole-par'>{hole.par}</div>
-                            <div className='hole-hcp'>{hole.handicap}</div>
-                        </div>
-                    )
-                })}
+                <div className='playerScore-container'>
+                    {players? players.map((player, idx) => {
+                        return(<IndScoreCard key={idx} player={player} course={course}/>)})
+                        : <div>Add Players</div>
+                    }
+                </div>
             </div>
-            <div className='hole-container'>
-                {players?players.map((player, idx) => <IndScoreCard key={idx} player={player} course={course}/> ):<p>add players</p>}
-            </div>
-           
         </div>
     )
 }
