@@ -8,7 +8,9 @@ function App() {
   const [players, setPlayers] = useState([]);
 
   const addToGame = (playerArray) => {
-    setPlayers(playerArray)
+    setPlayers([
+      ...players,
+      ...playerArray])
   }
   return (
     <div className="App">
