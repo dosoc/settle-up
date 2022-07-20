@@ -10,14 +10,14 @@ const initialFormValues = {
 }
 
 const PlayerForm = (props) => {
-    const [players, setPlayers] = useState([])
     const [formValues, setFormValues] = useState(initialFormValues)
-    const { add } = props
+    const [stagedPlayers, setStagedPlayers] = useState([])
+    const { add, players } = props
 
     const addPlayer = (evt) => {
         evt.preventDefault();
         const newPlayer = {...formValues}
-        setPlayers([...players, newPlayer])
+        setStagedPlayers([...stagedPlayers, newPlayer])
         setFormValues(initialFormValues)
     }
 
@@ -32,20 +32,20 @@ const PlayerForm = (props) => {
 
     const removePlayer = (evt) => {
         const filteredPlayers = players.filter(player => player.firstName !== evt.target.name);
-        setPlayers([...filteredPlayers])
+        setStagedPlayers([...filteredPlayers])
     }
 
     const editPlayer = (evt) => {
-        const filteredPlayers = players.filter(player => player.firstName !== evt.target.name);
+        const filteredPlayers = stagedPlayers.filter(player => player.firstName !== evt.target.name);
         const findPlayer = players.find(player => player.firstName === evt.target.name)
         setFormValues({...findPlayer})
-        setPlayers([...filteredPlayers])
+        setStagedPlayers([...filteredPlayers])
 
     }
 
     const addPlayersToGame = () => {
-        add(players)
-        setPlayers([])
+        add(stagedPlayers)
+        setStagedPlayers([])
     }
     return(
         <div className='container player-form'>
@@ -73,7 +73,7 @@ const PlayerForm = (props) => {
             </form>
             <h2>Player Staging</h2>
             <div className='player-card-container'>
-                 {players.map((player, idx) => <PlayerCard key={idx} player={player} remove={removePlayer} edit={editPlayer}/>)}
+                 {stagedPlayers.map((player, idx) => <PlayerCard key={idx} player={player} remove={removePlayer} edit={editPlayer}/>)}
             </div>
            
             <button onClick={addPlayersToGame}>Add All to Game</button>

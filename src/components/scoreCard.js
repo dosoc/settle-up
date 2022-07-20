@@ -4,8 +4,7 @@ import IndScoreCard from './indScoreCard'
 import courseData from '../data/courseData'
 
 const ScoreCard = (props) => {
-    const [course, setCourse] = useState([])
-    const {players} = props
+    const {players, course, setCourse} = props
 
     const onSelect = (evt) => {
         setCourse(courseData[evt.target.value])
